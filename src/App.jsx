@@ -1,5 +1,5 @@
 import React from "react";
-import { Provider } from "react-redux";
+
 import {store} from "./store";
 import CarSearch from "./components/CarSearch.jsx";
 import CarForm from "./components/CarForm.jsx";
@@ -9,7 +9,7 @@ import CarValue from "./components/CarValue.jsx";
 
 const App = () => {
   return (
-    <Provider store={store}>
+   
    
     <div>
       <CarSearch />
@@ -17,7 +17,7 @@ const App = () => {
       <CarList />
       <CarValue />
     </div>
-    </Provider>
+  
   );
 };
 
