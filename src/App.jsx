@@ -1,6 +1,4 @@
 import React from "react";
-
-import {store} from "./store";
 import CarSearch from "./components/CarSearch.jsx";
 import CarForm from "./components/CarForm.jsx";
 import CarList from "./components/CarList.jsx";
@@ -11,10 +9,12 @@ const App = () => {
   return (
    
    
-    <div>
-      <CarSearch />
+    <div className="container is-fluid">
+    
       <CarForm />
+      <CarSearch />
       <CarList />
+      
       <CarValue />
     </div>
   
