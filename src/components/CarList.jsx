@@ -1,10 +1,20 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {removeCar} from '../store';
+import { removeCar } from '../store';
+import { store } from '../store';
 
 const CarList = () => {
   const dispatch = useDispatch();
-  const cars = useSelector((state) => state.cars.data);
+
+  //Filter out the cars which their name includes the search input
+  const cars = useSelector(({ cars: { data, searchTerm } }) => {
+    return data.filter(
+      (car) => car.name.toLowerCase().includes(
+        searchTerm.toLowerCase()
+      )
+    );
+  });
+
 
   const handleDelete = (car) => {
     dispatch(removeCar(car.id));
