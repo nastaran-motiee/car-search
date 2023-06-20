@@ -7,12 +7,16 @@ const CarList = () => {
   const dispatch = useDispatch();
 
   //Filter out the cars which their name includes the search input
-  const cars = useSelector(({ cars: { data, searchTerm } }) => {
-    return data.filter(
+  const { cars, name } = useSelector(({ form, cars: { data, searchTerm } }) => {
+    const filteredCars = data.filter(
       (car) => car.name.toLowerCase().includes(
         searchTerm.toLowerCase()
       )
     );
+    return {
+      cars: filteredCars,
+      name: form.name
+    }
   });
 
 
@@ -20,8 +24,9 @@ const CarList = () => {
     dispatch(removeCar(car.id));
   }
   const renderedCars = cars.map((car) => {
+    const bold = name && car.name.toLowerCase().includes(name.toLowerCase());
     return (
-      <div key={ car.id } className="panel">
+      <div key={ car.id } className={ `panel ${bold && 'bold'}` }>
         <p>
           { car.name } - ${ car.cost }
         </p>
